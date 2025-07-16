@@ -1,0 +1,8 @@
+.Main {
+  text-align: center;
+  background-color: #c6ccd6;
+  display: flex;
+  font-size: calc(10px + 2vmin);
+  color: white;
+  height: 100%;
+}
