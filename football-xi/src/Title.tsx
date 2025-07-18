@@ -1,4 +1,4 @@
-import '../Main.css';
+import './Main.css';
 import './Title.css';
 
 function Title() {
