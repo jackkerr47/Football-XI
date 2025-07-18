@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import Main from './Main.tsx';
+import Main from './main/Main.tsx';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

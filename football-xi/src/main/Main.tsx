@@ -1,6 +1,6 @@
-import Title from './Title.tsx';
+import Title from '../title/Title.tsx';
 import './Main.css';
-import Squad from './Squad.tsx';
+import Squad from '../players/Squad.tsx';
 
 function Main() {
   return (

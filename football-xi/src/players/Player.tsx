@@ -1,5 +1,5 @@
-import { PlayerLocation } from './interfaces';
-import './Main.css';
+import { PlayerLocation } from '../utils/interfaces';
+import '../main/Main.css';
 import './Player.css';
 
 type PlayerProps = {
