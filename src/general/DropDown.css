@@ -1,0 +1,22 @@
+.dropDown {
+    justify-content: left;
+    margin-left: 2%;
+    border: 2px solid orange;
+    border-radius: 5%;
+    background-color: white;
+    color: orange;
+    font-size: 0.75em;
+    padding: 0.5%
+}
+
+select {
+    /* color: orange; */
+    font-size: 0.75em;
+    margin-top: 7.5%;
+    padding: 1%;
+    padding-left: 2%;
+    padding-right: 2%;
+    border: 2px solid orange;
+    border-radius: 10%;
+    font-family: 'ariel', sans-serif;
+}
