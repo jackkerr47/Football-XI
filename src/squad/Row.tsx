@@ -1,7 +1,8 @@
 import Player from "./Player.tsx";
+import { PlayerModel } from "../utils/interfaces.ts";
 
 interface RowProps {
-    numberOfPlayers: number;
+    players: PlayerModel[];
     numberOfRows: number;
     top: string;
 }
@@ -26,14 +27,21 @@ function calculateLeft(index: number, numberOfPlayers: number): string {
     return `${left}%`;
 }
 
-function Row({ top, numberOfPlayers, numberOfRows }: RowProps) {
+function Row({ players, top, numberOfRows }: RowProps) {
     const width = numberOfRows  === 5 ? '6%' : '7.5%';
     const height = numberOfRows === 5 ? '12%' : '15%';
 
     return (
         <div>
-            {Array.from({ length: numberOfPlayers }, (_, i) => (
-                <Player key={i} playerDimensionsandLocation={{ left: calculateLeft(i, numberOfPlayers), top: top, width: width, height: height }} />
+            {Array.from({ length: players.length }, (_, i) => (
+                <Player
+                    player={players[i]}
+                    key={i}
+                    left={calculateLeft(i, players.length)}
+                    top={top}
+                    width={width}
+                    height={height}
+                />
             ))}
         </div>
     );

@@ -1,16 +1,32 @@
-import { PlayerDimensionsAndLocation } from '../utils/interfaces';
 import '../main/Main.css';
 import './Player.css';
 
+import EditPlayerModal from './editModal/EditPlayerModal.tsx';
+import { PlayerModel } from '../utils/interfaces';
+import { useState } from 'react';
+
 type PlayerProps = {
-  playerDimensionsandLocation: PlayerDimensionsAndLocation;
+  player: PlayerModel;
+  left: string;
+  top: string;
+  width: string;
+  height: string;
 };
 
-function Player({ playerDimensionsandLocation }: PlayerProps) {
+function Player({ player, left, top, width, height }: PlayerProps) {
+  const [playerEditModalOpen, setPlayerEditModalOpen] = useState(false);
+  
   return (
-    <div className="player" style={{ left: playerDimensionsandLocation.left, top: playerDimensionsandLocation.top, width: playerDimensionsandLocation.width, height: playerDimensionsandLocation.height }}>
-      Player name
-    </div>
+    <>
+      <div 
+        className="player"
+        style={{ left: left, top: top, width: width, height: height }} 
+        onClick={() => setPlayerEditModalOpen(true)}
+      >
+        Player name
+      </div>
+      {playerEditModalOpen && <EditPlayerModal player={player} onModalClose={() => setPlayerEditModalOpen(false)} />}
+    </>
   );
 }
 
