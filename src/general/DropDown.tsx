@@ -10,14 +10,12 @@ interface DropDownProps {
 function DropDown({ options, onChange, label }: DropDownProps) {
     return (
         <div className="dropDown">
-            {label ? 
+            {label ? (
                 <>
-                    <label htmlFor="drop-down">
-                        {label}
-                    </label>
+                    <label htmlFor="drop-down">{label}</label>
                     <br />
                 </>
-            : null}
+            ) : null}
             <select id="drop-down" onChange={(e) => onChange(e.target.value)}>
                 {options.map((option) => (
                     <option key={option} value={option}>
@@ -26,7 +24,7 @@ function DropDown({ options, onChange, label }: DropDownProps) {
                 ))}
             </select>
         </div>
-    )
+    );
 }
 
 export default DropDown;

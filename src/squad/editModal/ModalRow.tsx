@@ -1,6 +1,6 @@
 import './EditPlayerModal.css';
 
-import { PlayerModel } from "../../utils/interfaces";
+import { PlayerModel } from '../../utils/interfaces';
 
 interface ModalRowProps {
     player: PlayerModel;
@@ -15,7 +15,7 @@ function ModalRow({ player, label }: ModalRowProps) {
                 <input type="text" defaultValue={player.name} />
             </label>
         </div>
-    )
+    );
 }
 
 export default ModalRow;

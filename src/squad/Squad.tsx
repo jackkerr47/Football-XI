@@ -8,72 +8,78 @@ import Row from './Row.tsx';
 import { allowedFormations } from '../utils/squad-utils.ts';
 
 function createFormation(
-  formation: string,
-  squad: SquadModel,
-  onSquadChange: () => void
+    formation: string,
+    squad: SquadModel,
+    onSquadChange: () => void
 ): ReactElement[] {
-  const rows = formation.split('-').map(Number);
-  rows.push(1);
+    const rows = formation.split('-').map(Number);
+    rows.push(1);
 
-  const topDifference = rows.length === 5 ? 17 : 21;
+    const topDifference = rows.length === 5 ? 17 : 21;
 
-  return rows
-    .slice()
-    .reverse()
-    .map((_, idx) => {
-      const rowIndex = rows.length - idx;
-      const top = `${100 - (rowIndex  * topDifference)}%`;
-      
-      return (
-        <Row
-          key={rowIndex}
-          players={squad.players.filter(player => player.rowNumber === rowIndex)}
-          top={top}
-          numberOfRows={rows.length}
-        />
-      );
-    });
+    return rows
+        .slice()
+        .reverse()
+        .map((_, idx) => {
+            const rowIndex = rows.length - idx;
+            const top = `${100 - rowIndex * topDifference}%`;
+
+            return (
+                <Row
+                    key={rowIndex}
+                    players={squad.players.filter(
+                        (player) => player.rowNumber === rowIndex
+                    )}
+                    top={top}
+                    numberOfRows={rows.length}
+                />
+            );
+        });
 }
 
 function initialiseSquad(formation: string): SquadModel {
-  const formationArray = [1, ...formation.split('-').map(Number)];
-  const players: PlayerModel[] = [];
+    const formationArray = [1, ...formation.split('-').map(Number)];
+    const players: PlayerModel[] = [];
 
-  for (let i = 0; i < formationArray.length; i++) {
-    for(let j = 0; j < formationArray[i]; j++) {
-      players.push({
-        id: players.length + 1,
-        name: '',
-        position: '',
-        club: '',
-        country: '',
-        rowNumber: i + 1
-      });
+    for (let i = 0; i < formationArray.length; i++) {
+        for (let j = 0; j < formationArray[i]; j++) {
+            players.push({
+                id: players.length + 1,
+                name: '',
+                position: '',
+                club: '',
+                country: '',
+                rowNumber: i + 1
+            });
+        }
     }
-  }
 
-  return { players };
+    return { players };
 }
 
 function Squad() {
-  const [formation, setFormation] = useState(allowedFormations[0]);
-  const [squad, setSquad] = useState<SquadModel>(initialiseSquad(formation));
+    const [formation, setFormation] = useState(allowedFormations[0]);
+    const [squad, setSquad] = useState<SquadModel>(initialiseSquad(formation));
 
-  const onFormationChange = (value: string) => {
-    setFormation(value);
-    setSquad(initialiseSquad(value));
-  }
+    const onFormationChange = (value: string) => {
+        setFormation(value);
+        setSquad(initialiseSquad(value));
+    };
 
-  const onSquadChange = (squad: SquadModel) => {
-    setSquad(squad);
-  }
+    const onSquadChange = (squad: SquadModel) => {
+        setSquad(squad);
+    };
 
-  return (
-    <div className="squad">
-      <DropDown options={allowedFormations} onChange={onFormationChange} label='Choose a formation'/>
-      {createFormation(formation, squad, () => onSquadChange)}
-    </div>
-  )
+    return (
+        <div className="squad">
+            <DropDown
+                options={allowedFormations}
+                onChange={onFormationChange}
+                label="Choose a formation"
+            />
+            {createFormation(formation, squad, () => onSquadChange)}
+        </div>
+    );
 }
 
 export default Squad;
