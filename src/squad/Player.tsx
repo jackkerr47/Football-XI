@@ -11,9 +11,17 @@ type PlayerProps = {
     top: string;
     width: string;
     height: string;
+    onPlayerChange: (updatedPlayer: PlayerModel) => void;
 };
 
-function Player({ player, left, top, width, height }: PlayerProps) {
+function Player({
+    player,
+    left,
+    top,
+    width,
+    height,
+    onPlayerChange
+}: PlayerProps) {
     const [playerEditModalOpen, setPlayerEditModalOpen] = useState(false);
 
     return (
@@ -29,6 +37,7 @@ function Player({ player, left, top, width, height }: PlayerProps) {
                 <EditPlayerModal
                     player={player}
                     onModalClose={() => setPlayerEditModalOpen(false)}
+                    onPlayerChange={onPlayerChange}
                 />
             )}
         </>

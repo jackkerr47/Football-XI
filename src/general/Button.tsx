@@ -1,10 +1,16 @@
+import './Button.css';
+
 interface ButtonProps {
     label: string;
-    onClick: () => void;
+    onClick: (arg) => void;
 }
 
-function Button() {
-    return <button className="button">Click Me</button>;
+function Button({ label, onClick }: ButtonProps) {
+    return (
+        <button className="button" onClick={onClick}>
+            {label}
+        </button>
+    );
 }
 
 export default Button;

@@ -10,7 +10,7 @@ import { allowedFormations } from '../utils/squad-utils.ts';
 function createFormation(
     formation: string,
     squad: SquadModel,
-    onSquadChange: () => void
+    onPlayerChange: (updatedPlayer: PlayerModel) => void
 ): ReactElement[] {
     const rows = formation.split('-').map(Number);
     rows.push(1);
@@ -32,6 +32,7 @@ function createFormation(
                     )}
                     top={top}
                     numberOfRows={rows.length}
+                    onPlayerChange={onPlayerChange}
                 />
             );
         });
@@ -66,8 +67,12 @@ function Squad() {
         setSquad(initialiseSquad(value));
     };
 
-    const onSquadChange = (squad: SquadModel) => {
-        setSquad(squad);
+    const onPlayerChange = (updatedPlayer: PlayerModel) => {
+        setSquad((prevSquad) => ({
+            players: prevSquad.players.map((p) =>
+                p.id === updatedPlayer.id ? updatedPlayer : p
+            )
+        }));
     };
 
     return (
@@ -77,7 +82,7 @@ function Squad() {
                 onChange={onFormationChange}
                 label="Choose a formation"
             />
-            {createFormation(formation, squad, () => onSquadChange)}
+            {createFormation(formation, squad, onPlayerChange)}
         </div>
     );
 }

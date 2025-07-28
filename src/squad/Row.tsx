@@ -5,6 +5,7 @@ interface RowProps {
     players: PlayerModel[];
     numberOfRows: number;
     top: string;
+    onPlayerChange: (updatedPlayer: PlayerModel) => void;
 }
 
 function calculateLeft(index: number, numberOfPlayers: number): string {
@@ -27,7 +28,7 @@ function calculateLeft(index: number, numberOfPlayers: number): string {
     return `${left}%`;
 }
 
-function Row({ players, top, numberOfRows }: RowProps) {
+function Row({ players, top, numberOfRows, onPlayerChange }: RowProps) {
     const width = numberOfRows === 5 ? '6%' : '7.5%';
     const height = numberOfRows === 5 ? '12%' : '15%';
 
@@ -41,6 +42,7 @@ function Row({ players, top, numberOfRows }: RowProps) {
                     top={top}
                     width={width}
                     height={height}
+                    onPlayerChange={onPlayerChange}
                 />
             ))}
         </div>

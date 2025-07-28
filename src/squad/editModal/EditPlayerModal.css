@@ -37,6 +37,8 @@
     display: flex;
     align-items: center;
     margin-top: 30px;
+    margin-left: 2.5%;
+    margin-right: 2.5%;
 }
 
 .modal-row label {
@@ -54,17 +56,3 @@
     margin-left: 5%;
     min-width: 0;
 }
-
-/* .modal-row label {
-  flex: 1;
-  margin-right: 10px;
-  font-weight: bold;
-  text-align: left;
-  margin-top: 0;
-}
-
-.modal-row input {
-  flex: 1;
-  text-align: right;
-  margin-left: 10px;
-} */
