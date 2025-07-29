@@ -7,4 +7,35 @@
     background-color: gold;
     position: absolute;
     font-size: 1rem;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.name {
+    font-weight: bold;
+    font-size: 20px;
+    overflow: hidden;
+}
+
+.position {
+    margin-top: 5%;
+    margin-bottom: 10%;
+    font-style: italic;
+    color: #333;
+    overflow: hidden;
+}
+
+.club img {
+    width: 30%;
+    height: auto;
+    left: 10%;
+    position: absolute;
+}
+
+.country img {
+    width: 30%;
+    height: auto;
+    right: 10%;
+    position: absolute;
+    background-color: transparent;
 }

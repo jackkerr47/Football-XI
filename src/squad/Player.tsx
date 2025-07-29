@@ -3,6 +3,7 @@ import './Player.css';
 
 import EditPlayerModal from './editModal/EditPlayerModal.tsx';
 import { PlayerModel } from '../utils/interfaces';
+import { mapCountryToFlag } from '../utils/squad-utils.ts';
 import { useState } from 'react';
 
 type PlayerProps = {
@@ -14,6 +15,12 @@ type PlayerProps = {
     onPlayerChange: (updatedPlayer: PlayerModel) => void;
 };
 
+function playerIsComplete(player: PlayerModel): boolean {
+    return (
+        !!player.name && !!player.position && !!player.club && !!player.country
+    );
+}
+
 function Player({
     player,
     left,
@@ -24,6 +31,8 @@ function Player({
 }: PlayerProps) {
     const [playerEditModalOpen, setPlayerEditModalOpen] = useState(false);
 
+    const file = `images/flags/${mapCountryToFlag(player.country)}`;
+
     return (
         <>
             <div
@@ -31,7 +40,23 @@ function Player({
                 style={{ left: left, top: top, width: width, height: height }}
                 onClick={() => setPlayerEditModalOpen(true)}
             >
-                Player name
+                {playerIsComplete(player) ? (
+                    <>
+                        <div className="name">{player.name}</div>
+                        <div className="position">{player.position}</div>
+                        <div className="club">
+                            <img
+                                src="images/crests/liverpool.png"
+                                alt="Liverpool FC"
+                            />
+                        </div>
+                        <div className="country">
+                            <img src={file} alt={player.country} />
+                        </div>
+                    </>
+                ) : (
+                    'Player name'
+                )}
             </div>
             {playerEditModalOpen && (
                 <EditPlayerModal
