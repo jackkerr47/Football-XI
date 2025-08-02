@@ -4,6 +4,7 @@ import './EditPlayerModal.css';
 import Button from '../../general/Button.tsx';
 import ModalRow from './ModalRow.tsx';
 import { PlayerModel } from '../../utils/interfaces';
+import { countryMap } from '../../utils/squad-utils.ts';
 import { useState } from 'react';
 
 interface EditPlayerModalProps {
@@ -47,6 +48,8 @@ function EditPlayerModal({
                             label={element}
                             key={element}
                             onChange={handleFieldChange}
+                            useTextInput={element !== 'Country'}
+                            options={Object.keys(countryMap)}
                         />
                     ))}
                     <Button label={'Save'} onClick={handleSave} />

@@ -31,7 +31,7 @@ function Player({
 }: PlayerProps) {
     const [playerEditModalOpen, setPlayerEditModalOpen] = useState(false);
 
-    const file = `images/flags/${mapCountryToFlag(player.country)}`;
+    const flagFile = `images/flags/${mapCountryToFlag(player.country)}`;
 
     return (
         <>
@@ -51,11 +51,11 @@ function Player({
                             />
                         </div>
                         <div className="country">
-                            <img src={file} alt={player.country} />
+                            <img src={flagFile} alt={player.country} />
                         </div>
                     </>
                 ) : (
-                    'Player name'
+                    <div className="clickToEdit">Click to Edit</div>
                 )}
             </div>
             {playerEditModalOpen && (

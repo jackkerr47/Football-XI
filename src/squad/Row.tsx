@@ -9,7 +9,7 @@ interface RowProps {
 }
 
 function calculateLeft(index: number, numberOfPlayers: number): string {
-    const playerWidth = 7.5;
+    const playerWidth = -10;
 
     if (numberOfPlayers === 2) {
         // Calculate as if there were 4 players, and pick the middle two positions (1 and 2)
@@ -29,8 +29,8 @@ function calculateLeft(index: number, numberOfPlayers: number): string {
 }
 
 function Row({ players, top, numberOfRows, onPlayerChange }: RowProps) {
-    const width = numberOfRows === 5 ? '6%' : '7.5%';
-    const height = numberOfRows === 5 ? '12%' : '15%';
+    const width = numberOfRows === 5 ? '6.5%' : '7.5%';
+    const height = numberOfRows === 5 ? '15%' : '18%';
 
     return (
         <div>

@@ -9,5 +9,9 @@
 
 .squad {
     display: flex;
-    top: '200%';
+}
+
+.Sidebar {
+    width: 20%;
+    height: 100%;
 }
