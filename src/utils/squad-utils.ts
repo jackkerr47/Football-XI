@@ -3,8 +3,12 @@ export const allowedFormations = [
     '4-3-3',
     '4-2-3-1',
     '4-2-4',
+    '4-4-1-1',
     '3-5-2',
-    '5-3-2'
+    '3-4-3',
+    '3-4-2-1',
+    '5-3-2',
+    '5-2-3'
 ];
 
 export const countryMap: Record<string, string> = {

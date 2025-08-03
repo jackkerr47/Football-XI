@@ -57,3 +57,8 @@
     margin-left: 5%;
     min-width: 0;
 }
+
+.modal-row select {
+    margin-top: 2%;
+    font-size: small;
+}
