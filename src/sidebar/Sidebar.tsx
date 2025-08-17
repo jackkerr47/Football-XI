@@ -1,6 +1,7 @@
 import '../main/Main.css';
 
 import DropDown from '../general/DropDown.tsx';
+import React from 'react';
 import Title from './Title.tsx';
 import { allowedFormations } from '../utils/squad-utils.ts';
 

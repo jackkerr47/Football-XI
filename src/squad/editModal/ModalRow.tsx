@@ -1,6 +1,7 @@
 import './EditPlayerModal.css';
 
 import { PlayerModel } from '../../utils/interfaces';
+import React from 'react';
 
 interface ModalRowProps {
     initialValue: string;
@@ -28,6 +29,7 @@ function ModalRow({
                         type="text"
                         defaultValue={initialValue}
                         onChange={(e) => onChange(field, e.target.value)}
+                        disabled={field === 'position'}
                     />
                 ) : (
                     <select

@@ -3,7 +3,8 @@ import './Player.css';
 
 import EditPlayerModal from './editModal/EditPlayerModal.tsx';
 import { PlayerModel } from '../utils/interfaces';
-import { mapCountryToFlag } from '../utils/squad-utils.ts';
+import React from 'react';
+import { mapCountryToFlag } from '../utils/country-utils.ts';
 import { useState } from 'react';
 
 type PlayerProps = {

@@ -4,7 +4,8 @@ import './EditPlayerModal.css';
 import Button from '../../general/Button.tsx';
 import ModalRow from './ModalRow.tsx';
 import { PlayerModel } from '../../utils/interfaces';
-import { countryMap } from '../../utils/squad-utils.ts';
+import React from 'react';
+import { countryMap } from '../../utils/country-utils.ts';
 import { useState } from 'react';
 
 interface EditPlayerModalProps {

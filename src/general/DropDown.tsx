@@ -1,6 +1,8 @@
 import '../main/Main.css';
 import './DropDown.css';
 
+import React from 'react';
+
 interface DropDownProps {
     options: string[];
     onChange: (value: string) => void;

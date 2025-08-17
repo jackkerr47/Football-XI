@@ -1,5 +1,6 @@
 import Player from './Player.tsx';
 import { PlayerModel } from '../utils/interfaces.ts';
+import React from 'react';
 
 interface RowProps {
     players: PlayerModel[];

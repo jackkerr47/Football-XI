@@ -4,7 +4,8 @@ export interface PlayerModel {
     position: string;
     club: string;
     country: string;
-    rowNumber: number;
+    rowNumber: number; // Which row the player is in
+    rowIndex: number; // Which position in the row the player is in
 }
 
 export interface SquadModel {

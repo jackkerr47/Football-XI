@@ -2,6 +2,7 @@ import '../main/Main.css';
 
 import { PlayerModel, SquadModel } from '../utils/interfaces.ts';
 
+import React from 'react';
 import { ReactElement } from 'react';
 import Row from './Row.tsx';
 

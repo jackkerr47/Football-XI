@@ -2,9 +2,11 @@ import './Main.css';
 
 import { PlayerModel, SquadModel } from '../utils/interfaces.ts';
 
+import React from 'react';
 import Sidebar from '../sidebar/Sidebar.tsx';
 import Squad from '../squad/Squad.tsx';
 import { allowedFormations } from '../utils/squad-utils.ts';
+import { positionSelector } from '../utils/position-selectors.ts';
 import { useState } from 'react';
 
 function initialiseSquad(formation: string): SquadModel {
@@ -16,10 +18,16 @@ function initialiseSquad(formation: string): SquadModel {
             players.push({
                 id: players.length + 1,
                 name: '',
-                position: '',
+                position: positionSelector(
+                    i + 1,
+                    j + 1,
+                    formationArray.length,
+                    formationArray[i]
+                ),
                 club: '',
                 country: '',
-                rowNumber: i + 1
+                rowNumber: i + 1,
+                rowIndex: j + 1
             });
         }
     }
