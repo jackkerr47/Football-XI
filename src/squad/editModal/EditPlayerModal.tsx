@@ -5,7 +5,6 @@ import Button from '../../general/Button.tsx';
 import ModalRow from './ModalRow.tsx';
 import { PlayerModel } from '../../utils/interfaces';
 import React from 'react';
-import { countryMap } from '../../utils/country-utils.ts';
 import { useState } from 'react';
 
 interface EditPlayerModalProps {
@@ -49,8 +48,7 @@ function EditPlayerModal({
                             label={element}
                             key={element}
                             onChange={handleFieldChange}
-                            useTextInput={element !== 'Country'}
-                            options={Object.keys(countryMap)}
+                            continentDropdown={element === 'Country'}
                         />
                     ))}
                     <Button label={'Save'} onClick={handleSave} />

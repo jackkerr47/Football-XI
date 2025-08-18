@@ -1,5 +1,6 @@
 import './EditPlayerModal.css';
 
+import ContinentDropdown from './ContinentDropdown.tsx';
 import { PlayerModel } from '../../utils/interfaces';
 import React from 'react';
 
@@ -8,8 +9,7 @@ interface ModalRowProps {
     field: keyof PlayerModel;
     label: string;
     onChange: (field: keyof PlayerModel, value: string) => void;
-    useTextInput?: boolean;
-    options?: string[];
+    continentDropdown?: boolean;
 }
 
 function ModalRow({
@@ -17,31 +17,24 @@ function ModalRow({
     field,
     label,
     onChange,
-    useTextInput = true,
-    options = []
+    continentDropdown = false
 }: ModalRowProps) {
     return (
         <div className="modal-row">
             <label>
                 {`${label}:`}
-                {useTextInput ? (
+                {continentDropdown ? (
+                    <ContinentDropdown
+                        value={initialValue}
+                        onChange={(value) => onChange(field, value)}
+                    />
+                ) : (
                     <input
                         type="text"
                         defaultValue={initialValue}
                         onChange={(e) => onChange(field, e.target.value)}
                         disabled={field === 'position'}
                     />
-                ) : (
-                    <select
-                        defaultValue={initialValue}
-                        onChange={(e) => onChange(field, e.target.value)}
-                    >
-                        {options.map((option) => (
-                            <option key={option} value={option}>
-                                {option}
-                            </option>
-                        ))}
-                    </select>
                 )}
             </label>
         </div>

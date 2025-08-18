@@ -56,6 +56,20 @@
     border-radius: 4px;
     margin-left: 5%;
     min-width: 0;
+    min-height: 20px;
+    transition: border-color 0.2s ease;
+    background-color: white;
+}
+
+.modal-row input:hover,
+.modal-row select:hover {
+    border-color: #999;
+}
+
+.modal-row input:focus,
+.modal-row select:focus {
+    outline: none;
+    border-color: #999;
 }
 
 .modal-row select {
