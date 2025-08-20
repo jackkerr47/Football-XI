@@ -37,7 +37,9 @@ function Player({
     return (
         <>
             <div
-                className="player"
+                className={`player ${
+                    playerIsComplete(player) ? 'completed' : ''
+                }`}
                 style={{ left: left, top: top, width: width, height: height }}
                 onClick={() => setPlayerEditModalOpen(true)}
             >
