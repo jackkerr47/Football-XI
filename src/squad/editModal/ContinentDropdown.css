@@ -59,15 +59,24 @@
     background: rgba(26, 26, 26, 0.95);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(40, 167, 69, 0.3);
+    border: 1px solid rgba(40, 167, 69, 0.2);
     border-radius: 12px;
     box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(40, 167, 69, 0.1);
-    z-index: 1001;
+    z-index: 9999;
     max-height: 400px;
-    overflow: hidden;
+    overflow: visible;
     display: flex;
     margin-top: 8px;
     animation: slideDown 0.3s ease-out;
+}
+
+.dropdown-menu.dropdown-above {
+    top: auto;
+    bottom: 100%;
+    margin-top: 0;
+    margin-bottom: 8px;
+    animation: slideUp 0.3s ease-out;
+    z-index: 9999; /* High z-index to ensure it's visible above everything */
 }
 
 @keyframes slideDown {
@@ -81,19 +90,31 @@
     }
 }
 
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 .continents-list {
     flex: 1;
     min-width: 120px;
     max-height: 400px;
     overflow-y: auto;
-    border-right: 1px solid rgba(40, 167, 69, 0.2);
+    overflow-x: hidden;
+    border-right: 1px solid rgba(40, 167, 69, 0.15);
 }
 
 .continent-item {
     position: relative;
     padding: 14px 18px;
     cursor: pointer;
-    border-bottom: 1px solid rgba(40, 167, 69, 0.1);
+    border-bottom: 1px solid rgba(40, 167, 69, 0.08);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -140,9 +161,10 @@
     min-width: 120px;
     max-height: 400px;
     overflow-y: auto;
+    overflow-x: hidden;
     background: rgba(45, 45, 45, 0.8);
     backdrop-filter: blur(10px);
-    border-left: 1px solid rgba(40, 167, 69, 0.2);
+    border-left: 1px solid rgba(40, 167, 69, 0.15);
 }
 
 .countries-submenu-header {
@@ -152,7 +174,7 @@
         rgba(40, 167, 69, 0.15),
         rgba(32, 201, 151, 0.15)
     );
-    border-bottom: 1px solid rgba(40, 167, 69, 0.2);
+    border-bottom: 1px solid rgba(40, 167, 69, 0.08);
     font-weight: 600;
     color: #e9ecef;
     font-size: 0.85rem;
@@ -163,7 +185,7 @@
 .country-item {
     padding: 12px 18px;
     cursor: pointer;
-    border-bottom: 1px solid rgba(40, 167, 69, 0.1);
+    border-bottom: 1px solid rgba(40, 167, 69, 0.08);
     color: #e9ecef;
     font-size: 0.9rem;
     transition: all 0.2s ease;
@@ -214,6 +236,11 @@
         flex-direction: column;
         max-height: 500px;
         margin-top: 6px;
+    }
+
+    .dropdown-menu.dropdown-above {
+        margin-bottom: 6px;
+        max-height: 400px; /* Slightly smaller on mobile when above */
     }
 
     .continents-list {
