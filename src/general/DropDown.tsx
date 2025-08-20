@@ -12,13 +12,12 @@ interface DropDownProps {
 function DropDown({ options, onChange, label }: DropDownProps) {
     return (
         <div className="dropDown">
-            {label && (
-                <>
-                    <label htmlFor="drop-down">{label}</label>
-                    <br />
-                </>
-            )}
             <select id="drop-down" onChange={(e) => onChange(e.target.value)}>
+                {label && (
+                    <option value="" disabled selected>
+                        {label}
+                    </option>
+                )}
                 {options.map((option) => (
                     <option key={option} value={option}>
                         {option}

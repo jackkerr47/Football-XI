@@ -1,24 +1,101 @@
 .dropDown {
-    justify-content: left;
-    margin-left: 2%;
-    border: 2px solid orange;
-    border-radius: 5%;
-    background-color: white;
-    color: orange;
-    font-size: 0.75em;
-    padding: 0.5%;
-    width: 80%;
-    left: 5%;
+    display: flex;
+    flex-direction: column;
+    margin: 20px 0;
+    padding: 0;
+    width: 90%;
     position: relative;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-select {
-    font-size: 0.75em;
-    margin-top: 7.5%;
-    padding: 1%;
-    padding-left: 2%;
-    padding-right: 2%;
-    border: 2px solid orange;
-    border-radius: 10%;
-    font-family: 'ariel', sans-serif;
+.dropDown label {
+    display: none;
+}
+
+.dropDown select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+    border: 2px solid #28a745;
+    border-radius: 12px;
+    color: #e9ecef;
+    font-size: 0.9rem;
+    font-weight: 600;
+    padding: 16px 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(40, 167, 69, 0.2);
+    position: relative;
+    width: 100%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.dropDown select:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(40, 167, 69, 0.3);
+    border-color: #20c997;
+    background: linear-gradient(135deg, #2d2d2d 0%, #1a1a1a 100%);
+}
+
+.dropDown select:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.2),
+        0 8px 25px rgba(40, 167, 69, 0.3);
+    border-color: #20c997;
+}
+
+.dropDown select:active {
+    transform: translateY(0);
+}
+
+/* Custom dropdown arrow */
+.dropDown::after {
+    content: '▼';
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #28a745;
+    font-size: 0.7rem;
+    pointer-events: none;
+    transition: transform 0.3s ease;
+    z-index: 1;
+}
+
+.dropDown:hover::after {
+    transform: translateY(-50%) rotate(180deg);
+    color: #20c997;
+}
+
+/* Style the options */
+.dropDown select option {
+    background: #2d2d2d;
+    color: #e9ecef;
+    padding: 12px;
+    font-size: 0.85rem;
+    border: none;
+    text-align: center;
+}
+
+.dropDown select option:hover {
+    background: #28a745;
+    color: #1a1a1a;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .dropDown {
+        width: 95%;
+        margin: 15px 0;
+    }
+
+    .dropDown select {
+        padding: 14px 14px;
+        font-size: 0.8rem;
+    }
 }

@@ -22,7 +22,7 @@ function ModalRow({
     return (
         <div className="modal-row">
             <label>
-                {`${label}:`}
+                <span className="modal-row-label">{`${label}:`}</span>
                 {continentDropdown ? (
                     <ContinentDropdown
                         value={initialValue}
