@@ -1,28 +1,35 @@
-import './ContinentDropdown.css';
+import './HierarchicalDropdown.css';
 
 import React, { useEffect, useRef, useState } from 'react';
-import {
-    getContinents,
-    getCountriesByContinent
-} from '../../utils/country-utils.ts';
 
-interface ContinentDropdownProps {
-    value: string;
-    onChange: (value: string) => void;
+interface HierarchicalData {
+    [key: string]: string[];
 }
 
-export const ContinentDropdown: React.FC<ContinentDropdownProps> = ({
+interface HierarchicalDropdownProps {
+    value: string;
+    onChange: (value: string) => void;
+    data: HierarchicalData;
+    placeholder?: string;
+    primaryLabel?: string;
+    secondaryLabel?: string;
+}
+
+export const HierarchicalDropdown: React.FC<HierarchicalDropdownProps> = ({
     value,
-    onChange
+    onChange,
+    data,
+    placeholder = 'Select an option',
+    primaryLabel = 'Primary',
+    secondaryLabel = 'Secondary'
 }) => {
     const [isOpen, setIsOpen] = useState(false);
-    const [hoveredContinent, setHoveredContinent] = useState<string | null>(
-        null
-    );
+    const [hoveredPrimary, setHoveredPrimary] = useState<string | null>(null);
     const [dropdownPosition, setDropdownPosition] = useState<'below' | 'above'>(
         'below'
     );
-    const continents = getContinents();
+
+    const primaryOptions = Object.keys(data);
     const dropdownRef = useRef<HTMLDivElement>(null);
     const triggerRef = useRef<HTMLDivElement>(null);
 
@@ -33,7 +40,7 @@ export const ContinentDropdown: React.FC<ContinentDropdownProps> = ({
                 !dropdownRef.current.contains(event.target as Node)
             ) {
                 setIsOpen(false);
-                setHoveredContinent(null);
+                setHoveredPrimary(null);
             }
         };
 
@@ -86,18 +93,18 @@ export const ContinentDropdown: React.FC<ContinentDropdownProps> = ({
         setIsOpen(!isOpen);
     };
 
-    const handleContinentHover = (continent: string) => {
-        setHoveredContinent(continent);
+    const handlePrimaryHover = (primaryOption: string) => {
+        setHoveredPrimary(primaryOption);
     };
 
-    const handleCountrySelect = (country: string) => {
-        onChange(country);
+    const handleSecondarySelect = (secondaryOption: string) => {
+        onChange(secondaryOption);
         setIsOpen(false);
-        setHoveredContinent(null);
+        setHoveredPrimary(null);
     };
 
     const getDisplayValue = () => {
-        return value || 'Select a country';
+        return value || placeholder;
     };
 
     return (
@@ -119,41 +126,39 @@ export const ContinentDropdown: React.FC<ContinentDropdownProps> = ({
                         dropdownPosition === 'above' ? 'dropdown-above' : ''
                     }`}
                 >
-                    <div className="continents-list">
-                        {continents.map((continent) => (
+                    <div className="primary-list">
+                        {primaryOptions.map((primaryOption) => (
                             <div
-                                key={continent}
-                                className="continent-item"
+                                key={primaryOption}
+                                className="primary-item"
                                 onMouseEnter={() =>
-                                    handleContinentHover(continent)
+                                    handlePrimaryHover(primaryOption)
                                 }
                             >
-                                <span className="continent-name">
-                                    {continent}
+                                <span className="primary-name">
+                                    {primaryOption}
                                 </span>
-                                <span className="continent-arrow">▶</span>
+                                <span className="primary-arrow">▶</span>
                             </div>
                         ))}
                     </div>
 
-                    {hoveredContinent && (
-                        <div className="countries-submenu">
-                            <div className="countries-submenu-header">
-                                {hoveredContinent}
+                    {hoveredPrimary && (
+                        <div className="secondary-submenu">
+                            <div className="secondary-submenu-header">
+                                {hoveredPrimary}
                             </div>
-                            {getCountriesByContinent(hoveredContinent).map(
-                                (country) => (
-                                    <div
-                                        key={country}
-                                        className="country-item"
-                                        onClick={() =>
-                                            handleCountrySelect(country)
-                                        }
-                                    >
-                                        {country}
-                                    </div>
-                                )
-                            )}
+                            {data[hoveredPrimary].map((secondaryOption) => (
+                                <div
+                                    key={secondaryOption}
+                                    className="secondary-item"
+                                    onClick={() =>
+                                        handleSecondarySelect(secondaryOption)
+                                    }
+                                >
+                                    {secondaryOption}
+                                </div>
+                            ))}
                         </div>
                     )}
                 </div>
@@ -162,4 +167,4 @@ export const ContinentDropdown: React.FC<ContinentDropdownProps> = ({
     );
 };
 
-export default ContinentDropdown;
+export default HierarchicalDropdown;

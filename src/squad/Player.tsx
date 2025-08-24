@@ -4,6 +4,7 @@ import './Player.css';
 import EditPlayerModal from './editModal/EditPlayerModal.tsx';
 import { PlayerModel } from '../utils/interfaces';
 import React from 'react';
+import { getLogoPath } from '../utils/logo-utils.ts';
 import { mapCountryToFlag } from '../utils/country-utils.ts';
 import { useState } from 'react';
 
@@ -49,8 +50,8 @@ function Player({
                         <div className="position">{player.position}</div>
                         <div className="club">
                             <img
-                                src="images/crests/liverpool.png"
-                                alt="Liverpool FC"
+                                src={getLogoPath(player.club)}
+                                alt={player.club}
                             />
                         </div>
                         <div className="country">

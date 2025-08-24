@@ -62,7 +62,7 @@
     border: 1px solid rgba(40, 167, 69, 0.2);
     border-radius: 12px;
     box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(40, 167, 69, 0.1);
-    z-index: 9999;
+    z-index: 10000;
     max-height: 400px;
     overflow: visible;
     display: flex;
@@ -76,7 +76,7 @@
     margin-top: 0;
     margin-bottom: 8px;
     animation: slideUp 0.3s ease-out;
-    z-index: 9999; /* High z-index to ensure it's visible above everything */
+    z-index: 10000; /* High z-index to ensure it's visible above everything */
 }
 
 @keyframes slideDown {
@@ -101,7 +101,7 @@
     }
 }
 
-.continents-list {
+.primary-list {
     flex: 1;
     min-width: 120px;
     max-height: 400px;
@@ -110,7 +110,7 @@
     border-right: 1px solid rgba(40, 167, 69, 0.15);
 }
 
-.continent-item {
+.primary-item {
     position: relative;
     padding: 14px 18px;
     cursor: pointer;
@@ -124,7 +124,7 @@
     color: #e9ecef;
 }
 
-.continent-item:hover {
+.primary-item:hover {
     background: linear-gradient(
         135deg,
         rgba(40, 167, 69, 0.15),
@@ -134,16 +134,16 @@
     transform: translateX(4px);
 }
 
-.continent-item:last-child {
+.primary-item:last-child {
     border-bottom: none;
 }
 
-.continent-name {
+.primary-name {
     color: inherit;
     font-weight: 500;
 }
 
-.continent-arrow {
+.primary-arrow {
     color: #6c757d;
     font-size: 10px;
     margin-left: 8px;
@@ -151,12 +151,12 @@
     transition: all 0.2s ease;
 }
 
-.continent-item:hover .continent-arrow {
+.primary-item:hover .primary-arrow {
     opacity: 1;
     color: #28a745;
 }
 
-.countries-submenu {
+.secondary-submenu {
     flex: 1;
     min-width: 120px;
     max-height: 400px;
@@ -167,7 +167,7 @@
     border-left: 1px solid rgba(40, 167, 69, 0.15);
 }
 
-.countries-submenu-header {
+.secondary-submenu-header {
     padding: 14px 18px;
     background: linear-gradient(
         135deg,
@@ -182,7 +182,7 @@
     letter-spacing: 0.5px;
 }
 
-.country-item {
+.secondary-item {
     padding: 12px 18px;
     cursor: pointer;
     border-bottom: 1px solid rgba(40, 167, 69, 0.08);
@@ -192,7 +192,7 @@
     font-weight: 400;
 }
 
-.country-item:hover {
+.secondary-item:hover {
     background: linear-gradient(
         135deg,
         rgba(40, 167, 69, 0.2),
@@ -202,31 +202,31 @@
     transform: translateX(4px);
 }
 
-.country-item:last-child {
+.secondary-item:last-child {
     border-bottom: none;
 }
 
 /* Scrollbar styling */
-.continents-list::-webkit-scrollbar,
-.countries-submenu::-webkit-scrollbar {
+.primary-list::-webkit-scrollbar,
+.secondary-submenu::-webkit-scrollbar {
     width: 6px;
 }
 
-.continents-list::-webkit-scrollbar-track,
-.countries-submenu::-webkit-scrollbar-track {
+.primary-list::-webkit-scrollbar-track,
+.secondary-submenu::-webkit-scrollbar-track {
     background: rgba(40, 167, 69, 0.1);
     border-radius: 3px;
 }
 
-.continents-list::-webkit-scrollbar-thumb,
-.countries-submenu::-webkit-scrollbar-thumb {
+.primary-list::-webkit-scrollbar-thumb,
+.secondary-submenu::-webkit-scrollbar-thumb {
     background: rgba(40, 167, 69, 0.4);
     border-radius: 3px;
     transition: background 0.2s ease;
 }
 
-.continents-list::-webkit-scrollbar-thumb:hover,
-.countries-submenu::-webkit-scrollbar-thumb:hover {
+.primary-list::-webkit-scrollbar-thumb:hover,
+.secondary-submenu::-webkit-scrollbar-thumb:hover {
     background: rgba(40, 167, 69, 0.6);
 }
 
@@ -243,22 +243,22 @@
         max-height: 400px; /* Slightly smaller on mobile when above */
     }
 
-    .continents-list {
+    .primary-list {
         border-right: none;
         border-bottom: 1px solid rgba(40, 167, 69, 0.2);
         max-height: 200px;
     }
 
-    .countries-submenu {
+    .secondary-submenu {
         border-left: none;
         max-height: 300px;
     }
 
-    .continent-item {
+    .primary-item {
         padding: 12px 16px;
     }
 
-    .country-item {
+    .secondary-item {
         padding: 10px 16px;
     }
 

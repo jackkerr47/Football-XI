@@ -19,6 +19,9 @@ function EditPlayerModal({
     onPlayerChange
 }: EditPlayerModalProps) {
     const [editedPlayer, setEditedPlayer] = useState<PlayerModel>(player);
+    const [errorMessage, setErrorMessage] = useState<string | undefined>(
+        undefined
+    );
     const rowLabels = ['Name', 'Position', 'Club', 'Country'];
 
     const handleFieldChange = (field: keyof PlayerModel, value: string) => {
@@ -29,6 +32,15 @@ function EditPlayerModal({
     };
 
     const handleSave = () => {
+        if (
+            editedPlayer.name === '' ||
+            editedPlayer.position === '' ||
+            editedPlayer.club === '' ||
+            editedPlayer.country === ''
+        ) {
+            setErrorMessage('All fields are required!');
+            return;
+        }
         onPlayerChange(editedPlayer);
         onModalClose();
     };
@@ -48,10 +60,12 @@ function EditPlayerModal({
                             label={element}
                             key={element}
                             onChange={handleFieldChange}
-                            continentDropdown={element === 'Country'}
                         />
                     ))}
                     <Button label={'Save'} onClick={handleSave} />
+                    {errorMessage && (
+                        <p className="error-message">{errorMessage}</p>
+                    )}
                 </div>
             </div>
         </div>
