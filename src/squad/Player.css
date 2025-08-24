@@ -1,13 +1,14 @@
 .player {
     padding: 10px;
-    border: 1px solid #ccc;
+    border-left: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+    border-top: 1px solid #ccc;
     border-radius: 5px;
     margin: 10px;
     color: white;
     background-color: gold;
     position: absolute;
     overflow: hidden;
-    /* white-space: nowrap; */
     clip-path: polygon(0 0, 100% 0, 100% 80%, 50% 100%, 0 80%);
     border-radius: 12px;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -16,7 +17,9 @@
 /* Enhanced styling for completed players */
 .player.completed {
     background: linear-gradient(135deg, #ffd700, #ffed4e, #ffd700);
-    border: 2px solid #e6c200;
+    border-left: 2px solid #e6c200;
+    border-right: 2px solid #e6c200;
+    border-top: 2px solid #e6c200;
     box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3), 0 8px 25px rgba(0, 0, 0, 0.2),
         inset 0 1px 0 rgba(255, 255, 255, 0.3);
     transform: translateY(-2px);
@@ -87,7 +90,9 @@
 /* Enhanced styling for incomplete players */
 .player:not(.completed) {
     background: linear-gradient(135deg, #6c757d, #868e96, #6c757d);
-    border: 2px solid #495057;
+    border-left: 2px solid #495057;
+    border-right: 2px solid #495057;
+    border-top: 2px solid #495057;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2),
         inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
